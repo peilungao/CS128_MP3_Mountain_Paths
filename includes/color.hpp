@@ -15,6 +15,7 @@ private:
   int red_ = 0;
   int green_ = 0;
   int blue_ = 0;
+  bool IsValidColor(int value) const;
 };
 
 bool operator==(const Color& rhs, const Color& lhs);
