@@ -2,8 +2,9 @@
 #define ELEVATION_DATASET_H
 
 #include <cstdlib>  // for size_t
-#include <vector>
+#include <limits>
 #include <string>
+#include <vector>
 
 class ElevationDataset {
 public:
@@ -20,8 +21,8 @@ private:
   size_t width_;
   size_t height_;
   std::vector<std::vector<int>> data_;
-  int max_ele_;
-  int min_ele_;
+  int max_ele_ = std::numeric_limits<int>::min();
+  int min_ele_ = std::numeric_limits<int>::max();
 };
 
 #endif

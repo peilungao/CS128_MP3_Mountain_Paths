@@ -81,9 +81,13 @@ which represents the following colors for each grid position:
 Imagine you are hiking in the Colorado Rockies and would like to know the path of least elevation change (i.e., the path of least resistance) from one side of the mountain to the other. Given the topological data for the region that you are in, one can calculate the path of least resistance from one side of the topological image map to the other. In this assignment, a `PathImage` object will be initialized with the topological image map, elevation data, and the width and height of the dataset. Starting from each data cell in the first (0th) column, a greedy least-elevation-change walk will be calculated from the first column to the last. The path found from each row will be encoded as a `Path` object and stored in the `PathImage` object's `paths_` collection. This will result in a `height` number of paths stored in the `PathImage` object. During construction, the `PathImage` object's `path_image_` is initialized with a copy of the argument passed to the parameter `image`. Before construction of the `PathImage` object has finished, each path will be painted across `path_image_` in red [RGB(252,25,63)], with the path of least overall resistance colored in green [RGB(31,253,13)]. **If there are paths of equal least overall resistance**, color green, the path begins from the lowest "row" number.
 
 For instance, given a `GrayscaleImage` object’s `image_` encoding the following topological image map:
+
  ![mountain_paths_1](https://cdn1.cs128.org/sp21/mountain_paths_1.jpg)
+
 The `PathImage` object’s `path_image_` derived from the `GrayscaleImage` object’s `image_` shown above would encode:
+
  ![mountain_paths_2](https://cdn1.cs128.org/sp21/mountain_paths_2.png)
+
 Notice that exactly one path starts from each row in the zeroth column spanning the topological image map. While paths can merge, each is considered independent from another and will have its own observed elevation change stored in its representation (`Path` object). To emphasize, the path with the least overall total change in elevation is colored in green.
 
 ### Calculating paths: a greedy walk across the image (read carefully!)
@@ -100,6 +104,7 @@ Let's talk specifics about the greedy walk through the image. We will always cho
 
 How do we define the least elevation change? During our walk, the total elevation change "experienced" by a person walking this path needs to be maintained and is considered the absolute value of the change in each step summed across the total path. This value will be stored in the `Path` object's `ele_change_` data member and will be compared against other `Path` object values when determining the best path amongst all the paths. How do we encode the path? Using a `Path` object, of course. Given the following image,
  ![mountain_paths_4](https://cdn1.cs128.org/sp21/mountain_paths_4.png)
+
 we would construct a `Path` object encoding this traversal as:
 
 | 2 | 1 | 2 | 3 | 4 | 4 |
@@ -157,7 +162,7 @@ Acquire the starter code by clicking the "GitHub Classroom" button at this page'
 
 ### Implementation
 
-# class ElevationDataset
+#### class ElevationDataset
 
 | Function Signature | Behavior Description |
 | --- | --- |
@@ -175,7 +180,7 @@ Acquire the starter code by clicking the "GitHub Classroom" button at this page'
 | `int max_ele_` | Maximum elevation datum read from the file. |
 | `int min_ele_` | Minimum elevation datum read from the file. |
 
-# class GrayscaleImage
+#### class GrayscaleImage
 
 | Function Signature | Behavior Description |
 | --- | --- |
@@ -193,7 +198,7 @@ Acquire the starter code by clicking the "GitHub Classroom" button at this page'
 | `size_t width_` | Width of the image |
 | `static const int kMaxColorValue = 255;` | Maximum possible grayscale value for the image; shared across all instances of this type. |
 
-# class PathImage
+#### class PathImage
 
 | Function Signature | Behavior Description |
 | --- | --- |
@@ -211,7 +216,7 @@ Acquire the starter code by clicking the "GitHub Classroom" button at this page'
 | `size_t width_` | Width of the image |
 | `static const int kMaxColorValue = 255` | Maximum possible grayscale value for the image; shared across all instances of this type. |
 
-# class Path
+#### class Path
 
 | Function Signature | Behavior Description |  |  |  |  |
 | --- | --- | --- | --- | --- | --- |
@@ -230,7 +235,7 @@ Acquire the starter code by clicking the "GitHub Classroom" button at this page'
 | `size_t starting_row_` | Row that this path begins from. |  |  |  |  |
 | `unsigned int ele_change_` | Total elevation change "experienced" by a person walking the path. |  |  |  |  |
 
-# class Color
+#### class Color
 
 | Function Signature | Behavior Description |
 | --- | --- |

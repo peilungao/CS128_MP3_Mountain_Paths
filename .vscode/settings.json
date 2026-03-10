@@ -10,10 +10,29 @@
   "clang-tidy.blacklist": [],
   "clang-tidy.compilerArgs": ["-std=c++20"],
   "clang-tidy.compilerArgsBefore": [
-    "-Iincludes",
+    "-isysroot",
+    "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk",
+    "-I/Users/veritas/scholar/University/Year1-Semester2/CS_128/MP3_mountain-paths/includes",
     "-Wunused-variable",
     "-Wuninitialized",
     "-Wunused-value"
+  ],
+  "clangd.arguments": [
+    "--enable-config",
+    "--query-driver=/usr/bin/clang++"
+  ],
+  "clangd.fallbackFlags": [
+    "-std=c++20",
+    "-I/Users/veritas/scholar/University/Year1-Semester2/CS_128/MP3_mountain-paths/includes",
+    "-isysroot",
+    "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk"
+  ],
+  "C_Cpp.codeAnalysis.clangTidy.enabled": true,
+  "C_Cpp.codeAnalysis.clangTidy.path": "/opt/homebrew/opt/llvm/bin/clang-tidy",
+  "C_Cpp.codeAnalysis.clangTidy.args": [
+    "--extra-arg-before=-isysroot",
+    "--extra-arg-before=/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk",
+    "--extra-arg-before=-I/Users/veritas/scholar/University/Year1-Semester2/CS_128/MP3_mountain-paths/includes"
   ],
   "C_Cpp.clang_format_sortIncludes": false,
   "C_Cpp.vcFormat": "Disabled",

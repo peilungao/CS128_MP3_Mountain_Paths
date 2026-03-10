@@ -1,15 +1,11 @@
 #include "elevation_dataset.hpp"
-// #include <vector>
 #include <fstream>
 #include <stdexcept>
-#include <limits>
 
 ElevationDataset::ElevationDataset(const std::string& filename, size_t width, size_t height):
     width_(width),
     height_(height),
-    data_(height_, std::vector<int>(width_, 0)),
-    max_ele_(INT32_MIN),
-    min_ele_(INT32_MAX) {
+    data_(height_, std::vector<int>(width_, 0)) {
   std::ifstream input_file_stream{filename};
   if (!input_file_stream.is_open()) {
     throw std::runtime_error("File can't be read");
